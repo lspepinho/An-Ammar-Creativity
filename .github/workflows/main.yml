@@ -49,7 +49,6 @@ jobs:
           haxelib git grig.audio https://gitlab.com/haxe-grig/grig.audio.git cbf91e2180fd2e374924fe74844086aab7891666 --quiet
           haxelib git FlxPartialSound https://github.com/FunkinDroidTeam/FlxPartialSound 3d1da83cca3863174ca6a56827cd95c2020754bc --quiet
           haxelib setup ~/haxelib
-          haxelib install hxcpp > /dev/null
           haxelib --never install flixel
           haxelib run lime setup flixel
           haxelib run lime setup
