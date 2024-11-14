@@ -36,7 +36,6 @@ jobs:
           haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp --quiet
           haxelib git lime https://github.com/mcagabe19-stuff/lime --quiet
           haxelib install openfl 9.3.3 --quiet
-          
           haxelib install flixel-addons 3.2.2 --quiet
           haxelib install flixel-tools 1.5.1 --quiet
           haxelib install hscript-iris 1.1.0 --quiet
@@ -48,7 +47,6 @@ jobs:
           haxelib git funkin.vis https://github.com/FunkinCrew/funkVis 22b1ce089dd924f15cdc4632397ef3504d464e90 --quiet --skip-dependencies
           haxelib git grig.audio https://gitlab.com/haxe-grig/grig.audio.git cbf91e2180fd2e374924fe74844086aab7891666 --quiet
           haxelib git FlxPartialSound https://github.com/FunkinDroidTeam/FlxPartialSound 3d1da83cca3863174ca6a56827cd95c2020754bc --quiet
-          haxelib setup ~/haxelib
           haxelib --never install flixel
           haxelib run lime setup flixel
           haxelib run lime setup
