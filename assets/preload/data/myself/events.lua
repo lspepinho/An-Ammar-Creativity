@@ -50,6 +50,14 @@ function onStepEvent(curStep)
     if curStep == 128 then
         doTweenAlpha('iconP2', 'iconP2', 1, 1)
     end
+    if HardMode then
+        hardEvent(curStep)
+    else
+        easyEvent(curStep)
+    end
+end
+
+function easyEvent(curStep)
     if curStep == 256 then
         doTweenAlpha('middleGlow', 'middleGlow', 0.25, 1, 1)
         doTweenAlpha('middleGlowOverlay', 'middleGlowOverlay', 0.1, 1, 1)
@@ -94,8 +102,8 @@ function onStepEvent(curStep)
     end
 
     if curStep == 256 then
-        setProperty('particleAmount', 1)
-        setProperty('particleSpeed', 2)
+        --setProperty('particleAmount', 1)
+        --setProperty('particleSpeed', 2)
         setProperty('showMode', true)
         setProperty("defaultCamZoom", 0.6)
     end
@@ -105,114 +113,214 @@ function onStepEvent(curStep)
     if curStep == 672 then
         setProperty('cameraSpeed', 1)
     end
+    if curStep == 1056 then
+        setProperty('checker.color', getColorFromHex("000000"))
+        setProperty('ground.color', getColorFromHex("000000"))
+    end
+    if curStep == 1568 then
+        doTweenColor('groundC', 'ground', '00FF00', 0.2, 'linear')
+        doTweenColor('checkerC', 'checker', '00FF00', 0.2, 'linear')
+        -- local chars = {'dad', 'boyfriend', 'dadTrail', 'boyfriendTrail'}
+        -- for i, v in pairs(chars) do
+        --     setProperty(v..'.colorTransform.redOffset', 0)
+        --     setProperty(v..'.colorTransform.greenOffset', 0)
+        --     setProperty(v..'.colorTransform.blueOffset', 0)
+        -- end
+        -- setProperty('dad.color', 0xFFFFFFFF)
+        -- setProperty('boyfriend.color', 0xFFFFFFFF)
+    end
+end
+
+function hardEvent(curStep)
+    if curStep == 160 then
+        cameraFlash("camGame", '000000', 4)
+        cameraFlash("camHUD", '000000', 1)
+        setProperty('checker.color', getColorFromHex("000000"))
+        setProperty('ground.color', getColorFromHex("000000"))
+    end
+
+    if curStep == 416 then
+        cameraFlash("camGame", '00FF00', 1)
+        setProperty('checker.color', getColorFromHex("00FF00"))
+        setProperty('checker.alpha', 0.2)
+        setProperty('ground.color', getColorFromHex("00FF00"))
+        setProperty('showMode', true)
+        setProperty("defaultCamZoom", 0.6)
+    end
+    if curStep == 640 then
+        doTweenX('checkerx', 'checker.velocity', 100 * 16, crochet/1000 * 7, 'quadIn')
+        doTweenY('checkery', 'checker.velocity', -30 * 16, crochet/1000 * 7, 'quadIn')
+    end
+    if curStep == 672 then
+        doTweenX('checkerx', 'checker.velocity', 100, crochet/1000, 'linear')
+        doTweenY('checkery', 'checker.velocity', -30, crochet/1000, 'linear')
+        cameraFlash("camGame", '000000', 10)
+    end
+    if curStep == 1200 then
+        setWhite('ground', true)
+    end
+    if curStep == 1204 then
+        setWhite('ground', false)
+    end
+    if curStep == 1208 then
+        setWhite('checker', true)
+    end
+    if curStep == 1210 then
+        setWhite('checker', false)
+    end
+    if curStep == 1212 then
+        setWhite('ground', true)
+        setWhite('checker', false)
+    end
+    if curStep == 1213 then
+        setWhite('ground', false)
+        setWhite('checker', true)
+    end
+    if curStep == 1214 then
+        setWhite('ground', true)
+        setWhite('checker', false)
+    end
+    if curStep == 1215 then
+        setWhite('ground', false)
+        setWhite('checker', true)
+    end
+    if curStep == 1216 then
+        setWhite('ground', false)
+        setWhite('checker', false)
+        cameraFlash("camGame", '000000', 10)
+        setProperty('checker.color', getColorFromHex("000000"))
+        setProperty('ground.color', getColorFromHex("000000"))
+        setProperty('showMode', false)
+        setProperty("defaultCamZoom", 0.9)
+    end
+    if curStep == 1472 then
+        cameraFlash("camGame", '00FF00', 1)
+        setProperty('checker.color', getColorFromHex("00FF00"))
+        setProperty('checker.alpha', 0.2)
+        setProperty('ground.color', getColorFromHex("00FF00"))
+        setProperty('showMode', true)
+        setProperty("defaultCamZoom", 0.6)
+    end
+    if curStep == 1852 then
+        doTweenX('checkerx', 'checker.velocity', 100 * 10, crochet/1000 * 1, 'quadIn')
+        doTweenY('checkery', 'checker.velocity', -30 * 10, crochet/1000 * 1, 'quadIn')
+    end
+    if curStep == 2080 then
+        doTweenX('checkerx', 'checker.velocity', 100, crochet/1000 * 2, 'linear')
+        doTweenY('checkery', 'checker.velocity', -30, crochet/1000 * 2, 'linear')
+    end
 end
 
 function onStepHit()
-    if ((curStep >= 128 and curStep < 256)) and (curStep % 16 == 0 or curStep % 64 == 56) then
-        setProperty('bottomGlow.alpha', 1)
-        doTweenAlpha('bottomGlow', 'bottomGlow' ,0, 1, 1)
+    if HardMode then
+        if (curStep >= 288 and curStep < 400) and (curStep % 16 == 8) then
+            setProperty('ground.color', getColorFromHex("FFFFFF"))
+            doTweenColor('groundC', 'ground', '000000', crochet/1000*3, 'quadOut')
 
-        setProperty('middleGlow.alpha', 0.75)
-        doTweenAlpha('middleGlow', 'middleGlow', 0.1, 1, 1)
-
-        setProperty('middleGlowOverlay.alpha', 0.2)
-        doTweenAlpha('middleGlowOverlay', 'middleGlowOverlay', 0.05, 1, 1)
-        triggerEvent('Add Camera Zoom', 0.015 * 6, 0.03 * 2)
-    end
-
-    if checkStep({388, 392, 400, 404}) then
-        setProperty('bottomGlow.alpha', 1)
-        doTweenAlpha('bottomGlow', 'bottomGlow' ,0, 0.5)
-
-        setProperty('middleGlow.alpha', 1)
-        doTweenAlpha('middleGlow', 'middleGlow', 0.25, 0.5)
-
-        setProperty('middleGlowOverlay.alpha', 0.5)
-        doTweenAlpha('middleGlowOverlay', 'middleGlowOverlay', 0.1, 0.5)
-        particle(60, 0.4)
-        triggerEvent('Add Camera Zoom', 0.015 * 2.5, 0.03 * 2.5)
-    end
-
-    if curStep >= 416 and curStep%8==0 and curStep < 640 then
-        setProperty('bottomGlow.alpha', 1)
-        doTweenAlpha('bottomGlow', 'bottomGlow' ,0, 0.5)
-        if curStep >= 544 then
-            setProperty('middleGlow.alpha', 0.5)
-            doTweenAlpha('middleGlow', 'middleGlow', 0.25, 0.5)
-    
-            setProperty('middleGlowOverlay.alpha', 0.25)
-            doTweenAlpha('middleGlowOverlay', 'middleGlowOverlay', 0.1, 0.5)
+            setProperty('checker.color', getColorFromHex("AAAAAA"))
+            doTweenColor('checkerC', 'checker', '000000', crochet/1000*3, 'quadOut')
+            checkBeat(3)
         end
-    end
+        if (curStep >= 416 and curStep < 640) and curStep % 8 == 4 then
+            setProperty('ground.color', getColorFromHex("BBFFBB"))
+            doTweenColor('groundC', 'ground', '00FF00', crochet/1000*1.5, 'quadOut')
+        end
+        if (curStep >= 928 and curStep < 1184) and curStep % 4 == 0 then
+            setProperty('ground.color', getColorFromHex("BBFFBB"))
+            doTweenColor('groundC', 'ground', '00FF00', crochet/1000*1, 'quadOut')
 
-    if curStep >= 640 and curStep%8==4 and curStep < 672 then
-        setProperty('bottomGlow.alpha', 1)
-        doTweenAlpha('bottomGlow', 'bottomGlow' ,0, 0.5)
+            checkBeat(1)
+        end
+        if (curStep >= 1472 and curStep < 1728) and curStep % 8 == 4 then
+            checkBeat(2)
+        end
+        if (curStep >= 1856 and curStep < 2080) and (curStep % 8 == 4) then
+            setProperty('ground.color', getColorFromHex("BBFFBB"))
+            doTweenColor('groundC', 'ground', '00FF00', crochet/1000*1.5, 'quadOut')
+        end
+        if (curStep >= 2112 and curStep < 2352) and curStep % 4 == 0 then
+            setProperty('ground.color', getColorFromHex("BBFFBB"))
+            doTweenColor('groundC', 'ground', '00FF00', crochet/1000*1, 'quadOut')
 
-        setProperty('middleGlow.alpha', 1)
-        doTweenAlpha('middleGlow', 'middleGlow', 0.25, 0.5)
-
-        setProperty('middleGlowOverlay.alpha', 0.5)
-        doTweenAlpha('middleGlowOverlay', 'middleGlowOverlay', 0.1, 0.5)
-
-        particle(60, 0.4)
-        triggerEvent('Add Camera Zoom', 0.015 * 2.5, 0.03 * 2.5)
-    end
-
-    if curStep >= 672 and curStep%8==0 and curStep < 928 then
-        setProperty('bottomGlow.alpha', 1)
-        doTweenAlpha('bottomGlow', 'bottomGlow' ,0, 0.5)
-
-        setProperty('middleGlow.alpha', 0.5)
-        doTweenAlpha('middleGlow', 'middleGlow', 0.25, 0.5)
-
-        setProperty('middleGlowOverlay.alpha', 0.25)
-        doTweenAlpha('middleGlowOverlay', 'middleGlowOverlay', 0.1, 0.5)
-
-        setProperty('camGame.angle', curStep%16==0 and 5 or -5)
-        doTweenAngle('camGame', 'camGame', 0, 0.5, 'quadout')
-
-        particle(20, 0.4)
-        triggerEvent('Add Camera Zoom', 0.015 * 2.5, 0.03 * 2.5)
-    end
-
-    if ((curStep >= 928 and curStep < 1056)) and (curStep % 16 == 0 or (curStep+8) % 64 == 56) then
-        setProperty('bottomGlow.alpha', 1)
-        doTweenAlpha('bottomGlow', 'bottomGlow' ,0, 1, 1)
-
-        setProperty('middleGlow.alpha', 0.75)
-        doTweenAlpha('middleGlow', 'middleGlow', 0.1, 1, 1)
-
-        setProperty('middleGlowOverlay.alpha', 0.2)
-        doTweenAlpha('middleGlowOverlay', 'middleGlowOverlay', 0.05, 1, 1)
-        triggerEvent('Add Camera Zoom', 0.015 * 6, 0.03 * 2)
-    end
-
-    if curStep >= 1568 and curStep%8==0 and curStep < 1824 then
-        setProperty('bottomGlow.alpha', 1)
-        doTweenAlpha('bottomGlow', 'bottomGlow' ,0, 0.5)
-
-        setProperty('middleGlow.alpha', 0.5)
-        doTweenAlpha('middleGlow', 'middleGlow', 0.25, 0.5)
-
-        setProperty('middleGlowOverlay.alpha', 0.25)
-        doTweenAlpha('middleGlowOverlay', 'middleGlowOverlay', 0.1, 0.5)
-
-        setProperty('camGame.angle', curStep%16==0 and 5 or -5)
-        doTweenAngle('camGame', 'camGame', 0, 0.5, 'quadout')
-
-        particle(20, 0.4)
-        triggerEvent('Add Camera Zoom', 0.015 * 2.5, 0.03 * 2.5)
+            checkBeat(1)
+        end
+    else
+        if ((curStep >= 128 and curStep < 256)) and (curStep % 16 == 0 or curStep % 64 == 56) then
+            triggerEvent('Add Camera Zoom', 0.015 * 6, 0.03 * 2)
+            checkBeat(3)
+        end
+        if checkStep({388, 392, 400, 404}) then
+            triggerEvent('Add Camera Zoom', 0.015 * 6, 0.03 * 2)
+            checkBeat(1)
+        end
+        if curStep >= 416 and curStep < 640 then
+            if curStep % 8 == 4 then
+                setProperty('ground.color', getColorFromHex("BBFFBB"))
+                doTweenColor('groundC', 'ground', '00FF00', crochet/1000*1.5, 'quadOut')
+            end
+        end
+        if checkStep({644, 652, 660, 668}) then
+            triggerEvent('Add Camera Zoom', 0.015 * 6, 0.03 * 2)
+            checkBeat(1)
+        end
+        if ((curStep >= 672 and curStep < 928) or (curStep >= 1568 and curStep < 1824)) then
+            if (curStep % 8 == 0) then
+                triggerEvent('Add Camera Zoom', 0.015 * 1, 0.03 * 1)
+                checkBeat(1.5)
+            end
+            if curStep % 8 == 4 then
+                setProperty('ground.color', getColorFromHex("BBFFBB"))
+                doTweenColor('groundC', 'ground', '00FF00', crochet/1000*1.5, 'quadOut')
+            end
+        end
+        if (curStep >= 928 and curStep < 1056) and (curStep-16 % 16 == 0 or curStep-16 % 64 == 56) then
+            triggerEvent('Add Camera Zoom', 0.015 * 6, 0.03 * 2)
+            checkBeat(3)
+        end
+        if ((curStep >= 1056 and curStep < 1552) and (curStep % 8 == 0)) or (curStep >= 1552 and curStep % 4 == 0 and curStep < 1568) then
+            if (curStep < 1552 and curStep % 16 == 8) or curStep >= 1552 then
+                setProperty('ground.color', getColorFromHex("FFFFFF"))
+                doTweenColor('groundC', 'ground', '000000', crochet/1000*(curStep >= 1552 and 1 or 2), 'quadOut')
+                -- local chars = {'dad', 'boyfriend', 'dadTrail', 'boyfriendTrail'}
+                -- for i, v in pairs(chars) do
+                --     setProperty(v..'.colorTransform.redOffset', 255)
+                --     setProperty(v..'.colorTransform.greenOffset', 255)
+                --     setProperty(v..'.colorTransform.blueOffset', 255)
+                -- end
+            end
+            if (curStep < 1552 and curStep % 16 == 0) or curStep >= 1552 then
+                setProperty('checker.color', getColorFromHex("EEEEEE"))
+                doTweenColor('checkerC', 'checker', '000000', crochet/1000*(curStep >= 1552 and 1 or 2), 'quadOut')
+                checkBeat(2)
+                -- local chars = {'dad', 'boyfriend', 'dadTrail', 'boyfriendTrail'}
+                -- for i, v in pairs(chars) do
+                --     setProperty(v..'.colorTransform.redOffset', 0)
+                --     setProperty(v..'.colorTransform.greenOffset', 0)
+                --     setProperty(v..'.colorTransform.blueOffset', 0)
+                -- end
+                -- setProperty('dad.color', 0xFF000000)
+                -- setProperty('boyfriend.color', 0xFF000000)
+            end
+        end
     end
 end
 
 function particle(amount, speed)
-    callOnLuas('createBackParticle', {amount, speed})
+    --callOnLuas('createBackParticle', {amount, speed})
 end
 
+function checkBeat(dur)
+    callOnLuas('beatChecker', {dur})
+end
+
+function setWhite(obj, white)
+    setProperty(obj..'.colorTransform.redOffset', (white and 255 or 0))
+    setProperty(obj..'.colorTransform.greenOffset', (white and 255 or 0))
+    setProperty(obj..'.colorTransform.blueOffset', (white and 255 or 0))
+end
 
 function opponentNoteHit(membersIndex, noteData, noteType, isSustainNote)
-    if (curBeat >= 264 and curBeat < 328) then
+    if not HardMode and (curBeat >= 264 and curBeat < 328) then
         addHealth(isSustainNote and -0.003 or -0.0062)
     end
     if HardMode then

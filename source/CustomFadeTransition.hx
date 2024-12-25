@@ -27,7 +27,7 @@ class CustomFadeTransition extends MusicBeatSubstate {
 	var char:FlxSprite;
 
 	public static var charName:String = "char1";
-	public static var chars:Array<String> = ["char1", "char2", "char3", "char4"];
+	public static var chars:Array<String> = ["char1", "char2", "char3", "char4", "char5", "char6"];
 	var charTween:FlxTween;
 	var loadingTween:FlxTween;
 	public static var newLoading:Bool = false;
