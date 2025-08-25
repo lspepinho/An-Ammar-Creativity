@@ -1,63 +1,63 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				1,
 				0
 			],
-			"anim": "idle",
+			"indices": [],
 			"fps": 20,
-			"name": "AnAmmarBlox_Idle",
-			"indices": []
+			"anim": "idle",
+			"loop": false,
+			"name": "Idle"
 		},
 		{
 			"offsets": [
-				108,
-				-48
+				-14,
+				9
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 20,
 			"anim": "singDOWN",
-			"indices": [],
-			"name": "AnAmmarBlox_Down"
+			"loop": false,
+			"name": "singDown"
 		},
 		{
 			"offsets": [
-				44,
-				24
+				63,
+				23
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 20,
 			"anim": "singUP",
-			"indices": [],
-			"name": "AnAmmarBlox_Up"
+			"loop": false,
+			"name": "singUp"
 		},
 		{
 			"offsets": [
-				-26,
-				-5
+				4,
+				-1
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 20,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "AnAmmarBlox_Right"
+			"loop": false,
+			"name": "singRight"
 		},
 		{
 			"offsets": [
-				46,
-				3
+				60,
+				16
 			],
-			"loop": false,
+			"indices": [],
 			"fps": 20,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "AnAmmarBlox_Left"
+			"loop": false,
+			"name": "singLeft"
 		}
 	],
 	"no_antialiasing": false,
-	"image": "characters/AmmarRoblox",
+	"image": "characters/AmmarRoblox2",
 	"position": [
 		-100,
 		120

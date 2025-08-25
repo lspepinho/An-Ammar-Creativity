@@ -121,7 +121,7 @@ class Main extends Sprite
 		}
 		#end
 
-		FlxG.stage.window.title = "Friday Night Funkin': An Ammar Creativity V4";
+		FlxG.stage.window.title = "Friday Night Funkin': An Ammar Creativity";
 		#if debug FlxG.stage.window.title += " - DEBUG"; #end
 
 		FlxG.game.focusLostFramerate = #if mobile 30 #else 60 #end;
@@ -132,8 +132,8 @@ class Main extends Sprite
 
 		// shader coords fix
 		FlxG.signals.gameResized.add(function (w, h) {
-		     if (FlxG.cameras != null) {
-			   for (cam in FlxG.cameras.list) {
+		    if (FlxG.cameras != null) {
+			  	for (cam in FlxG.cameras.list) {
 				@:privateAccess
 				if (cam != null && cam._filters != null)
 					resetSpriteCache(cam.flashSprite);

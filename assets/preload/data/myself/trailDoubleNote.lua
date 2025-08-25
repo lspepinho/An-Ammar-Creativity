@@ -26,6 +26,7 @@ function goodNoteHit(id, direction, noteType, isSustainNote)
             setProperty('boyfriendTrail.offset.x', pastFrameX)
             setProperty('boyfriendTrail.offset.y', pastFrameY)
             setProperty('boyfriendTrail.alpha', 1)
+            setProperty('boyfriendTrail.x', getProperty('boyfriend.x'))
             doTweenAlpha('boyfriendTrailAlpha', 'boyfriendTrail', 0, 0.4)
             cancelTimer('framingnt')
         end
@@ -33,6 +34,7 @@ function goodNoteHit(id, direction, noteType, isSustainNote)
         pastFrameX = getProperty('boyfriend.offset.x')
         pastFrameY = getProperty('boyfriend.offset.y')
         runTimer('framingnt', 0.03, 1)
+        setProperty('boyfriendTrail.color', getProperty('boyfriend.color'))
 
         doTweenX("boyfriendTrailMoveX" ,'boyfriendTrail.offset', pastFrameX - 50, 0.4, "quadOut")
     end
@@ -45,6 +47,7 @@ function opponentNoteHit(id, direction, noteType, isSustainNote)
             setProperty('dadTrail.offset.x', pastDadFrameX)
             setProperty('dadTrail.offset.y', pastDadFrameY)
             setProperty('dadTrail.alpha', 1)
+            setProperty('dadTrail.x', getProperty('dad.x'))
             doTweenAlpha('dadTrailAlpha', 'dadTrail', 0, 0.4)
             cancelTimer('framingntDad')
         end
@@ -52,6 +55,7 @@ function opponentNoteHit(id, direction, noteType, isSustainNote)
         pastDadFrameX = getProperty('dad.offset.x')
         pastDadFrameY = getProperty('dad.offset.y')
         runTimer('framingntDad', 0.03, 1)
+        setProperty('dadTrail.color', getProperty('dad.color'))
 
         doTweenX("dadTrailMoveX" ,'dadTrail.offset', pastDadFrameX + 50, 0.4, "quadOut")
     end
